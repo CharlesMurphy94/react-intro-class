@@ -33,6 +33,12 @@ class Calculator extends Component {
             display: "0"
             });
         }
+        else if (this.state.resetDisplay){
+            this.setState({operator: operator,
+            tempNum: parseInt(this.state.display,10),
+            display: "0"
+            });
+        }
     }
     calculate(){ 
         if (!this.state.operator){
@@ -55,7 +61,7 @@ class Calculator extends Component {
             default:
                 break;
         }
-        this.setState({display: String(result)});
+        this.setState({display: String(result), resetDisplay: true});
     } 
     clearDisplay(){
         this.setState({operator: "",
@@ -64,6 +70,8 @@ class Calculator extends Component {
                         resetDisplay: false
                     })
     }
+
+
     render () {
         return (
             <div id="calculator-container">
